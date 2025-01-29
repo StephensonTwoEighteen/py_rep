@@ -1,0 +1,10 @@
+
+{
+    "success": true,
+    "user": {
+        "email": "qew412@qwe.ryd",
+        "name": "qwes"
+    },
+    "accessToken": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWE1YWIxOWVkMjgwMDAxYjU1ZDM2MSIsImlhdCI6MTczODE2OTAwOSwiZXhwIjoxNzM4MTcwMjA5fQ.9BxtKybY1O75vMvFC9tZjHdmuMS-kFanXEU3JoJcBOQ",
+    "refreshToken": "225852f270ec6118e1ec38fa443b68a8ffb8b65603502658cfa5f997de401d2de8382f2b381d108f"
+}
