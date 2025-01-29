@@ -47,17 +47,23 @@ jobs:
       # Шаг 6: Генерируем Allure-отчет
       - name: Generate Allure report
         run: |
-          allure generate test_results --output allure-report
-      - name: Output report link
+          allure generate test_results --output allure-report --clean
+      - name: Display report link
         run: |
-          echo "Отчет доступен по следующей ссылке: https://StephensonTwoEighteen.github.io/py_rep/"
+          echo "### Allure Report" >> $GITHUB_STEP_SUMMARY
+          echo "Отчет доступен по ссылке: [Allure Report](https://StephensonTwoEighteen.github.io/py_rep/)" >> $GITHUB_STEP_SUMMARY
 
-      # Шаг 7: Проверяем содержимое рабочей директории (debug)
+      # Шаг 7: Добавляем .nojekyll файл
+      - name: Add .nojekyll file
+        run: |
+          touch allure-report/.nojekyll
+
+      # Шаг 8: Проверяем содержимое рабочей директории (debug)
       - name: List files (debug)
         run: |
           ls -R
 
-      # Шаг 8: Публикуем отчет на GitHub Pages
+      # Шаг 9: Публикуем отчет на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
