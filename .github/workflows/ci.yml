@@ -21,7 +21,7 @@ jobs:
       # Шаг 2: Авторизуемся в GHCR (если используешь GitHub Container Registry)
       - name: Log in to GHCR
         run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u stephensontwoeighteen --password-stdin
 
       # Шаг 3: Запускаем тесты в Docker-контейнере
       - name: Run tests in Docker
