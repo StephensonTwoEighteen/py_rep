@@ -9,7 +9,7 @@ on:
       - main  # Запускать пайплайн при создании PR в main
 
 jobs:
-  test:
+  stellar-test:
     runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu
 
     steps:
