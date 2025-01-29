@@ -32,8 +32,13 @@ jobs:
       # Шаг 4: Устанавливаем Allure CLI
       - name: Install Allure CLI
         run: |
+          # Скачиваем Allure CLI
           sudo apt-get update
-          sudo apt-get install allure
+          sudo apt-get install wget unzip
+          wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip
+          sudo unzip allure-2.24.0.zip -d /opt/
+          sudo ln -s /opt/allure-2.24.0/bin/allure /usr/bin/allure
+          allure --version
 
       # Шаг 5: Запускаем тесты и генерируем сырые данные Allure
       - name: Run tests with Allure
