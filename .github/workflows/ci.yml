@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - main  # Запускать пайплайн при создании PR в main
+  workflow_dispatch:
 
 jobs:
   stellar-test:
