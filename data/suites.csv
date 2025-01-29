@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Jan 29 06:58:44 UTC 2025","Wed Jan 29 06:58:45 UTC 2025","479","tests","stellar_test","","","","Проверка успешности регистрации пользователя","Проверка регистрации юзера"
+"passed","Wed Jan 29 06:58:43 UTC 2025","Wed Jan 29 06:58:44 UTC 2025","475","tests","stellar_test","","","","Проверка успешности получения ингредиентов","Проверка получения ингредиентов"
+"passed","Wed Jan 29 06:58:44 UTC 2025","Wed Jan 29 06:58:44 UTC 2025","503","tests","stellar_test","","","","Проверка успешности регистрации пользователя","Проверка регистрации юзера"
