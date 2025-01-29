@@ -29,19 +29,37 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Установи зависимости из файла
 
-      # Шаг 4: Запускаем тесты и генерируем сырые данные Allure
+      # Шаг 4: Устанавливаем Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install allure
+
+      # Шаг 5: Запускаем тесты и генерируем сырые данные Allure
       - name: Run tests with Allure
         run: |
           pytest --alluredir=test_results
-
-      # Шаг 5: Генерируем Allure-отчет
+        
+      # Шаг 6: Генерируем Allure-отчет
       - name: Generate Allure report
         run: |
-          allure serve test_results
+          allure generate test_results --output allure-report
 
-      # Шаг 6: Сохраняем сырые данные Allure как артефакты
-      - name: Upload Allure results
+      # Шаг 7: Сохраняем сырые данные Allure как артефакты
+      - name: Upload Allure report
         uses: actions/upload-artifact@v3
         with:
-          name: allure-results
-          path: test_results
+          name: allure-report
+          path: allure-report
+
+      # # Шаг 6: Генерируем Allure-отчет
+      # - name: Generate Allure report
+      #   run: |
+      #     allure serve test_results
+
+      # # Шаг 7: Сохраняем сырые данные Allure как артефакты
+      # - name: Upload Allure results
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: allure-results
+      #     path: test_results
