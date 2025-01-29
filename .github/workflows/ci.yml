@@ -32,7 +32,6 @@ jobs:
       # Шаг 4: Устанавливаем Allure CLI
       - name: Install Allure CLI
         run: |
-          # Скачиваем Allure CLI
           sudo apt-get update
           sudo apt-get install wget unzip
           wget https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip
@@ -44,39 +43,20 @@ jobs:
       - name: Run tests with Allure
         run: |
           pytest --alluredir=test_results
-        
-      # # Шаг 6: Генерируем Allure-отчет
-      # - name: Generate Allure report
-      #   run: |
-      #     allure generate test_results --output allure-report
-
-      # # Шаг 7: Сохраняем сырые данные Allure как артефакты
-      # - name: Upload Allure report
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: allure-report
-      #     path: allure-report
 
       # Шаг 6: Генерируем Allure-отчет
       - name: Generate Allure report
         run: |
           allure generate test_results --output allure-report
 
-      # Шаг 7: Публикуем отчет на GitHub Pages
+      # Шаг 7: Проверяем содержимое рабочей директории (debug)
+      - name: List files (debug)
+        run: |
+          ls -R
+
+      # Шаг 8: Публикуем отчет на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}  # Используй PAT, если репозиторий приватный
           publish_dir: allure-report
-
-      # # Шаг 6: Генерируем Allure-отчет
-      # - name: Generate Allure report
-      #   run: |
-      #     allure serve test_results
-
-      # # Шаг 7: Сохраняем сырые данные Allure как артефакты
-      # - name: Upload Allure results
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: allure-results
-      #     path: test_results
