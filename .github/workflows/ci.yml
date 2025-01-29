@@ -62,11 +62,11 @@ jobs:
         run: |
           allure generate test_results --output allure-report
 
-      # Шаг 7: Сохраняем сырые данные Allure
+      # Шаг 7: Публикуем отчет на GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}  # Используй PAT, если репозиторий приватный
           publish_dir: allure-report
 
       # # Шаг 6: Генерируем Allure-отчет
