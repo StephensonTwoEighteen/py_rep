@@ -1,9 +1,6 @@
-import json
 import allure
 import logging
 import random
-import requests
-import requests_to_curl
 import pytest
 
 from core.assertions import Assertions
@@ -20,6 +17,15 @@ def test_get_ingredients_page(base_api):
     Assertions.assert_that_value_is_equal_to('ingredients_response',
                                              response.status_code,
                                              STATUS_OK)
+
+
+@allure.description("Проверка получения статуса ответа ingredients")
+@allure.title("Проверка получения 'success'")
+def test_get_success_ingredients_response(base_api):
+    response = base_api.get(path="ingredients")
+    Assertions.assert_that_value_is_equal_to(
+        't', response.json()['success'], True
+        )
 
 
 @pytest.mark.parametrize("name, email, password, status_code",
