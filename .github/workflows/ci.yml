@@ -48,6 +48,9 @@ jobs:
       - name: Generate Allure report
         run: |
           allure generate test_results --output allure-report
+      - name: Output report link
+        run: |
+          echo "Отчет доступен по следующей ссылке: https://StephensonTwoEighteen.github.io/py_rep/"
 
       # Шаг 7: Проверяем содержимое рабочей директории (debug)
       - name: List files (debug)
@@ -60,4 +63,4 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}  # Используй PAT, если репозиторий приватный
           publish_dir: allure-report
-          branch: gh-pages  # Указываем ветку явно
+          publish_branch: gh-pages  # Используем правильный параметр
