@@ -28,7 +28,7 @@ jobs:
         run: |
           docker run --rm \
             -v "$(pwd)/test_results:/app/test_results" \
-            ghcr.io/${{ github.actor }}/my-test-image:latest
+            ghcr.io/stephensontwoeighteen/my-test-image:latest
 
       # Шаг 4: Генерируем Allure-отчет
       - name: Generate Allure report
