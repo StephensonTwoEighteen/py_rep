@@ -45,17 +45,29 @@ jobs:
         run: |
           pytest --alluredir=test_results
         
+      # # Шаг 6: Генерируем Allure-отчет
+      # - name: Generate Allure report
+      #   run: |
+      #     allure generate test_results --output allure-report
+
+      # # Шаг 7: Сохраняем сырые данные Allure как артефакты
+      # - name: Upload Allure report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: allure-report
+      #     path: allure-report
+
       # Шаг 6: Генерируем Allure-отчет
       - name: Generate Allure report
         run: |
           allure generate test_results --output allure-report
 
-      # Шаг 7: Сохраняем сырые данные Allure как артефакты
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v3
+      # Шаг 7: Сохраняем сырые данные Allure
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: allure-report
-          path: allure-report
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
 
       # # Шаг 6: Генерируем Allure-отчет
       # - name: Generate Allure report
