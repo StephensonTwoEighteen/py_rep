@@ -60,3 +60,4 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}  # Используй PAT, если репозиторий приватный
           publish_dir: allure-report
+          branch: gh-pages  # Указываем ветку явно
